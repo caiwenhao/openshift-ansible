@@ -76,6 +76,9 @@
   include: config.yml
   when: not openshift_node_bootstrap
 
+- name: copy /etc/resolv.conf
+  copy: src=/etc/resolv.conf dest=/etc/origin/node/resolv.conf
+
 - name: Configure AWS Cloud Provider Settings
   lineinfile:
     dest: /etc/sysconfig/{{ openshift.common.service_type }}-node

@@ -76,3 +76,21 @@ ifup lo:1
     enabled: yes
     state: started
 ```
+
+openshift_node : restart node
+```
+/etc/origin/node/resolv.conf
+```
+
+```
+- name: copy /etc/resolv.conf
+  copy: src=/etc/resolv.conf dest=/etc/origin/node/resolv.conf
+```
+
+
+8. 
+'keytool' is unavailable. Please install java-1.8.0-openjdk-headless on the control node
+
+```
+yum install java-1.8.0-openjdk-headless
+```
