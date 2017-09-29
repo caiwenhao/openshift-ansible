@@ -17,6 +17,8 @@ cd openshift-ansible
 git checkout -b lifesense origin/lifesense
 ```
 
+cat inventory/byo/hosts.cfg  >>/etc/hosts
+
 1. 修改远程用户名
 ```
 ansible_ssh_user=lifesense
