@@ -27,7 +27,13 @@ ansible_ssh_user=lifesense
 openshift_release=v3.6
 ```
 
-3. 禁止磁盘空间检查
+3. 禁止磁盘空间和内存检查
 ```
-openshift_disable_check=disk_availability
+openshift_disable_check=disk_availability,memory_availability
+
+```
+
+4. 安装docker
+```
+openshift.common.is_containerized=true
 ```
