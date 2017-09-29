@@ -34,6 +34,11 @@ openshift_disable_check=disk_availability,memory_availability
 ```
 
 4. 安装docker
+
+> openshift_version 注释when判断 
+
 ```
 openshift.common.is_containerized=true
+openshift_docker_options="-l warn --ipv6=false --log-driver=journald --registry-mirror=http://b377ad59.m.daocloud.io -s overlay2"
+
 ```
