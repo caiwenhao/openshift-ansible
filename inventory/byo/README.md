@@ -1,0 +1,19 @@
+# OpenShift Ansible 安装
+
+github开源项目使用最佳实践
+
+> 参考 https://github.com/caiwenhao/kubespray/blob/master/docs/integration.md
+
+
+
+环境准备:
+
+```
+yum install git ansible pyopenssl python-lxml
+easy_install jinja2
+cd /data/
+git clone https://github.com/caiwenhao/openshift-ansible.git
+cd openshift-ansible
+git checkout -b lifesense origin/lifesense
+```
+
