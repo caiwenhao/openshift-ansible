@@ -2,6 +2,12 @@
 # These tasks dispatch to the proper set of docker tasks based on the
 # inventory:openshift_docker_use_system_container variable
 
+- name: Create docker root directory
+  file: path="/data/docker_root" state=directory
+
+- name: ln /var/lib/docker
+  file: src=/data/docker_root dest=/var/lib/docker state=link
+
 - include: udev_workaround.yml
   when: docker_udev_workaround | default(False) | bool
 
