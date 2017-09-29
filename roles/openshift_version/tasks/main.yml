@@ -1,6 +1,17 @@
 ---
 # Determine the openshift_version to configure if none has been specified or set previously.
 
+- name: Hosts | populate inventory into hosts file
+  blockinfile:
+    dest: /etc/hosts
+    block: |-
+      {% for item in (groups['nodes']|default([]))|unique -%}{{ hostvars[item]['access_ip'] | default(hostvars[item]['ip'] | default(hostvars[item]['ansible_default_ipv4']['address'])) }}{% if (item != hostvars[item]['ansible_hostname']) %} {{ hostvars[item]['ansible_hostname'] }}{% endif %}
+      {% endfor %}
+    state: present
+    create: yes
+    backup: yes
+    marker: "# Ansible inventory hosts {mark}"
+
 - set_fact:
     is_containerized: "{{ openshift.common.is_containerized | default(False) | bool }}"
     is_atomic: "{{ openshift.common.is_atomic | default(False) | bool }}"
