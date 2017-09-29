@@ -4,14 +4,14 @@
 - name: Hosts | populate inventory into hosts file
   blockinfile:
     dest: /etc/hosts
-    block: |-
+    block: |
       {% for item in (groups['nodes']|default([]))|unique -%}
-      {{ hostvars[item]['access_ip'] | default(hostvars[item]['ip'] | default(hostvars[item]['ansible_default_ipv4']['address'])) }} {% if (item != hostvars[item]['ansible_nodename']) %} {{ hostvars[item]['ansible_nodename'] }}{% endif %}
+      {{ hostvars[item]['access_ip'] | default(hostvars[item]['ip'] | default(hostvars[item]['ansible_default_ipv4']['address']))}} {{ hostvars[item]['ansible_nodename'] }}
       {% endfor %}
     state: present
     create: yes
     backup: yes
-    marker: "# Ansible inventory hosts {mark}"
+    marker: "# Ansible inventory hosts {mark}"    
 
 - set_fact:
     is_containerized: "{{ openshift.common.is_containerized | default(False) | bool }}"
