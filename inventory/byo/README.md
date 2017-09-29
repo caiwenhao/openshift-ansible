@@ -22,3 +22,7 @@ git checkout -b lifesense origin/lifesense
 ansible_ssh_user=lifesense
 ```
 
+2.  修改版本为3.6 
+```
+openshift_release=v3.6
+```
