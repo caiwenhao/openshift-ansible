@@ -29,7 +29,7 @@ openshift_release=v3.6
 
 3. 禁止磁盘空间和内存检查
 ```
-openshift_disable_check=disk_availability,memory_availability
+openshift_disable_check=disk_availability,memory_availability,docker_image_availability
 
 ```
 
@@ -43,3 +43,10 @@ openshift_docker_options="-l warn --ipv6=false --log-driver=journald --registry-
 ```
 创建软链接
 ln -s /data/docker_root /var/lib/docker
+
+
+5. /sbin/service iptables restart
+
+```
+新增一空行 /etc/sysconfig/iptables
+```
