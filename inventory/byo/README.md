@@ -94,3 +94,7 @@ openshift_node : restart node
 ```
 yum install java-1.8.0-openjdk-headless
 ```
+
+创建管理员帐号
+htpasswd -B /etc/origin/master/htpasswd admin
+oadm policy add-cluster-role-to-user cluster-admin admin
