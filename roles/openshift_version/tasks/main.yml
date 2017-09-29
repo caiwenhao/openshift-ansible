@@ -5,7 +5,8 @@
   blockinfile:
     dest: /etc/hosts
     block: |-
-      {% for item in (groups['nodes']|default([]))|unique -%}{{ hostvars[item]['access_ip'] | default(hostvars[item]['ip'] | default(hostvars[item]['ansible_default_ipv4']['address'])) }}{% if (item != hostvars[item]['ansible_hostname']) %} {{ hostvars[item]['ansible_hostname'] }}{% endif %}
+      {% for item in (groups['nodes']|default([]))|unique -%}
+      {{ hostvars[item]['access_ip'] | default(hostvars[item]['ip'] | default(hostvars[item]['ansible_default_ipv4']['address'])) }} {% if (item != hostvars[item]['ansible_env']['HOSTNAME']) %} {{ hostvars[item]['ansible_env']['HOSTNAME'] }}{% endif %}
       {% endfor %}
     state: present
     create: yes
