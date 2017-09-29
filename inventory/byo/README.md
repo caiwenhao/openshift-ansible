@@ -26,3 +26,8 @@ ansible_ssh_user=lifesense
 ```
 openshift_release=v3.6
 ```
+
+3. 禁止磁盘空间检查
+```
+openshift_disable_check=disk_availability
+```
