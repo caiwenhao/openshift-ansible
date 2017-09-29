@@ -1,4 +1,15 @@
 ---
+
+- name: Install NetworkManager
+  package: name=NetworkManager state=installed
+  when: not openshift.common.is_atomic | bool
+
+- name: Enable NetworkManager
+  systemd:
+    name: NetworkManager
+    enabled: yes
+    state: started
+
 - name: Check for NetworkManager service
   command: >
     systemctl show NetworkManager

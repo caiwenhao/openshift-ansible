@@ -50,3 +50,29 @@ ln -s /data/docker_root /var/lib/docker
 ```
 新增一空行 /etc/sysconfig/iptables
 ```
+
+6. ucloud上配置内网负债均衡器
+
+```
+vim /etc/sysconfig/network-scripts/ifcfg-lo:1
+DEVICE=lo:1
+IPADDR=10.10.100.49
+NETMASK=255.255.255.255
+```
+ifup lo:1
+
+
+7. NetworkManager
+
+/roles/openshift_node_dnsmasq/tasks/main.yml
+```
+- name: Install NetworkManager
+  package: name=NetworkManager state=installed
+  when: not openshift.common.is_atomic | bool
+
+- name: Enable NetworkManager
+  systemd:
+    name: NetworkManager
+    enabled: yes
+    state: started
+```
