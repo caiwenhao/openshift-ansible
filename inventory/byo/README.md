@@ -17,3 +17,7 @@ cd openshift-ansible
 git checkout -b lifesense origin/lifesense
 ```
 
+修改远程用户名 ansible.cfg
+```
+remote_user = lifesense
+```
