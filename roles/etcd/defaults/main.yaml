@@ -12,7 +12,7 @@ r_etcd_common_embedded_etcd: false
 r_etcd_common_etcdctl_command: "{{ 'etcdctl' if r_etcd_common_etcd_runtime == 'host' or r_etcd_common_embedded_etcd | bool else 'docker exec etcd_container etcdctl' if r_etcd_common_etcd_runtime == 'docker' else 'runc exec etcd etcdctl' }}"
 
 # etcd server vars
-etcd_conf_dir: '/data/etcd'
+etcd_conf_dir: '/var/lib/etcd'
 r_etcd_common_system_container_host_dir: /var/lib/etcd/etcd.etcd
 etcd_system_container_conf_dir: /var/lib/etcd/etc
 etcd_conf_file: "{{ etcd_conf_dir }}/etcd.conf"

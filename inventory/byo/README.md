@@ -105,3 +105,8 @@ htpasswd -B /etc/origin/master/htpasswd admin
 oadm policy add-cluster-role-to-user cluster-admin admin
 
 
+
+失败回滚 
+```
+ansible-playbook ~/openshift- ansible/playbooks/adhoc/uninstall.yml
+```
