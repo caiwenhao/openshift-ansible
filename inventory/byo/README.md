@@ -9,15 +9,13 @@ github开源项目使用最佳实践
 环境准备:
 
 ```
-yum install git ansible pyopenssl python-lxml
+yum install git ansible pyopenssl python-lxml -y
 easy_install jinja2
 cd /data/
 git clone https://github.com/caiwenhao/openshift-ansible.git
 cd openshift-ansible
 git checkout -b lifesense origin/lifesense
 ```
-
-cat inventory/byo/hosts.cfg  >>/etc/hosts
 
 1. 修改远程用户名
 ```
