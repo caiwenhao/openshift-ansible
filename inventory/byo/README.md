@@ -97,6 +97,13 @@ openshift_node : restart node
 yum install java-1.8.0-openjdk-headless
 ```
 
+9. 所有节点自动规范hostsname配置 预计写入到hosts配置文件
+
+10. 修改etcd_conf_dir 为/data/etcd
+
+
 创建管理员帐号
 htpasswd -B /etc/origin/master/htpasswd admin
 oadm policy add-cluster-role-to-user cluster-admin admin
+
+
