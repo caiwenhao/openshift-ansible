@@ -1,4 +1,25 @@
 ---
+
+- name: Set hostname facts
+  hosts: oo_all_hosts
+  tags:
+  - always
+  tasks:
+  - name: Gather nodes hostnames
+    setup:
+      gather_subset: '!all'
+      filter: ansible_*
+  - name: Assign inventory name to unconfigured hostnames (non-CoreOS)
+    hostname:
+      name: "{{ ansible_default_ipv4.address|regex_replace('\\.','-')}}"
+  - name: Assign inventory name to unconfigured hostnames (CoreOS only)
+    command: "hostnamectl set-hostname  {{inventory_hostname}}"
+    register: hostname_changed
+  - name: Update hostname fact (CoreOS only)
+    setup:
+      gather_subset: '!all'
+      filter: ansible_hostname
+
 - name: Ensure that all non-node hosts are accessible
   hosts: oo_masters_to_config:oo_etcd_to_config:oo_lb_to_config:oo_nfs_to_config
   any_errors_fatal: true

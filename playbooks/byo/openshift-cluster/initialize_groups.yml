@@ -9,10 +9,3 @@
   tasks:
   - include_vars: cluster_hosts.yml
 
-- name: Assign inventory name to unconfigured hostnames (non-CoreOS)
-  hostname:
-    name: "{{ ansible_default_ipv4.address|regex_replace('\\.','-')}}"
-
-- name: Assign inventory name to unconfigured hostnames (CoreOS only)
-  command: "hostnamectl set-hostname  {{inventory_hostname}}"
-  register: hostname_changed
