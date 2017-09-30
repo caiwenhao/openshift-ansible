@@ -51,7 +51,7 @@ etcd_hostname: "{{ inventory_hostname }}"
 etcd_ip: "{{ ansible_default_ipv4.address }}"
 etcd_is_atomic: False
 etcd_is_containerized: False
-etcd_is_thirdparty: False
+etcd_is_thirdparty: true
 
 # etcd dir vars
 etcd_data_dir: "{{ '/var/lib/origin/openshift.local.etcd' if r_etcd_common_embedded_etcd | bool else '/data/etcd/' if r_etcd_common_etcd_runtime != 'runc' else '/data/etcd/etcd.etcd/' }}"
