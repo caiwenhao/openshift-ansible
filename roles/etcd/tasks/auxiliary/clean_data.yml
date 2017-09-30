@@ -1,5 +1,5 @@
 ---
 - name: Remove member data
   file:
-    path: /var/lib/etcd/member
+    path: /data/etcd/member
     state: absent

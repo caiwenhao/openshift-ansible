@@ -1,6 +1,6 @@
 ---
 - set_fact:
-    l_etcd_src_data_dir: "{{ '/var/lib/origin/openshift.local.etcd' if r_etcd_common_embedded_etcd | bool else '/var/lib/etcd/' }}"
+    l_etcd_src_data_dir: "{{ '/var/lib/origin/openshift.local.etcd' if r_etcd_common_embedded_etcd | bool else '/data/etcd/' }}"
 
 - name: Pull etcd system container
   command: atomic pull --storage=ostree {{ openshift.etcd.etcd_image }}
