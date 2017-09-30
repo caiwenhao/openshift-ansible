@@ -110,3 +110,13 @@ oadm policy add-cluster-role-to-user cluster-admin admin
 ```
 ansible-playbook ~/openshift- ansible/playbooks/adhoc/uninstall.yml
 ```
+
+
+检查
+
+```
+etcdctl -C https://10.9.127.191:2379 --ca-file=/etc/etcd/ca.crt --cert-file=/etc/etcd/peer.crt --key-file=/etc/etcd/peer.key cluster-health
+oc status
+oc get node
+oc get pod
+```
