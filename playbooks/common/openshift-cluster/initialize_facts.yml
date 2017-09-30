@@ -13,7 +13,7 @@
     hostname:
       name: "{{ ansible_default_ipv4.address|regex_replace('\\.','-')}}"
   - name: Assign inventory name to unconfigured hostnames (CoreOS only)
-    command: "hostnamectl set-hostname  {{inventory_hostname}}"
+    command: "hostnamectl set-hostname  {{ansible_default_ipv4.address|regex_replace('\\.','-')}}"
     register: hostname_changed
   - name: Update hostname fact (CoreOS only)
     setup:
