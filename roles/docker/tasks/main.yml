@@ -2,6 +2,9 @@
 # These tasks dispatch to the proper set of docker tasks based on the
 # inventory:openshift_docker_use_system_container variable
 
+- name: network
+  template: src=network.j2 dest=/etc/sysconfig/network
+
 - name: Create docker root directory
   file: path="/data/docker_root" state=directory
 
