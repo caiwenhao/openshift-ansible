@@ -233,8 +233,6 @@
       size: "{{ (openshift_logging_elasticsearch_pvc_size | trim | length == 0) | ternary('10Gi', openshift_logging_elasticsearch_pvc_size) }}"
       access_modes: "{{ openshift_logging_elasticsearch_pvc_access_modes | list }}"
       pv_selector: "{{ openshift_logging_elasticsearch_pvc_pv_selector }}"
-    when:
-    - openshift_logging_elasticsearch_pvc_dynamic | bool
 
   - name: Set ES storage
     oc_obj:
